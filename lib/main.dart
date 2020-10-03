@@ -14,6 +14,31 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text('Row and Column Widgets'),
         ),
+        body: Container(
+            child: Row(
+          children: [
+            Column(
+              children: [
+                Container(
+                  child: ContainerName('Container 1', Colors.orange),
+                ),
+                Container(child: ContainerName('Container 2', Colors.white))
+              ],
+            ),
+            Column(
+              children: [
+                ContainerName('Container 3', Colors.yellow),
+                ContainerName('Container 4', Colors.blue)
+              ],
+            ),
+            Column(
+              children: [
+                ContainerName('Container 5', Colors.black),
+                ContainerName('Container 6', Colors.red)
+              ],
+            ),
+          ],
+        )),
       ),
     );
   }
