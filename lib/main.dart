@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,47 +18,70 @@ class MyApp extends StatelessWidget {
         ),
         body: Container(
             child: Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Column(
               children: [
                 Container(
-                  child: ContainerName('Container 1', Colors.orange),
+                  padding: EdgeInsets.all(10),
+                  height: 100,
+                  width: 100,
+                  decoration: BoxDecoration(
+                      color: Colors.orange, border: Border.all(width: 3)),
                 ),
-                Container(child: ContainerName('Container 2', Colors.white))
+                Container(
+                    transform: Matrix4.rotationZ(pi / 4),
+                    height: 100,
+                    width: 100,
+                    decoration: BoxDecoration(color: Colors.white))
               ],
             ),
             Column(
               children: [
-                ContainerName('Container 3', Colors.yellow),
-                ContainerName('Container 4', Colors.blue)
+                Expanded(
+                    child: Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Container(
+                            height: 100,
+                            width: 100,
+                            decoration: BoxDecoration(color: Colors.yellow)))),
+                Expanded(
+                    child: Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Container(
+                            padding: EdgeInsets.all(10),
+                            height: 100,
+                            width: 100,
+                            decoration: BoxDecoration(color: Colors.blue))))
               ],
             ),
             Column(
               children: [
-                ContainerName('Container 5', Colors.black),
-                ContainerName('Container 6', Colors.red)
+                Expanded(
+                    child: Padding(
+                        padding: const EdgeInsets.fromLTRB(10, 70, 10, 70),
+                        child: Container(
+                            height: 100,
+                            width: 100,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.black,
+                              border: Border.all(width: 3, color: Colors.white),
+                            )))),
+                // Expanded(child:
+                Padding(
+                    padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+                    child: Container(
+                      height: 100,
+                      width: 100,
+                      decoration: BoxDecoration(color: Colors.red),
+                    ))
               ],
             ),
           ],
         )),
       ),
     );
-  }
-}
-
-class ContainerName extends StatelessWidget {
-  final String name;
-  final Color color;
-
-  const ContainerName(this.name, this.color);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        margin: EdgeInsets.all(10),
-        height: 100,
-        width: 100,
-        decoration: BoxDecoration(color: color),
-        child: Text(name, textAlign: TextAlign.center));
   }
 }
